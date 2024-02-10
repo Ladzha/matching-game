@@ -1,0 +1,35 @@
+.portal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+}
+
+.modal{
+  /* width: min(300px, 80vw); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  border: none;
+  font-size: var(--text-size);
+  padding: 2rem 5rem 2rem 5rem;
+  background-color: var(--focus-color);
+  border-radius: 3rem;
+  font-weight: 500;
+  color: var(--background-color);
+  /* transform: scale(0.5); */
+  /* transition: 0.4s; */
+}
+dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.win-info{
+  font-size: var(--text-size);
+}

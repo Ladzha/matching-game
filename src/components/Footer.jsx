@@ -1,8 +1,7 @@
-import React from 'react'
-
 const Footer = () => {
+  console.log('FOOTER');
   return (
-    <div>Footer</div>
+    <footer className='footer'>Cheer up, everything is going to be alright.</footer>
   )
 }
 
