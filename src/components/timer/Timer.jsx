@@ -1,9 +1,16 @@
 import { useCountdownTimer } from '../../hooks/useCountdownTimer';
 import './Timer.css';
 
-const Timer = ({seconds}) => {
+const Timer = ({seconds, gameOn, setGameOn}) => {
 
   let {secondsLeft, start, pause, reset } = useCountdownTimer(seconds)
+
+  if(gameOn){
+    // start()
+  }
+  if(secondsLeft===0){
+    setGameOn(false)
+  }
 
   return (
     <div className='timer-container'>

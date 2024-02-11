@@ -1,8 +1,7 @@
-import {useState, useEffect, useCallback} from 'react';
+import {useState} from 'react';
 import Board from './board/Board.jsx'
 import Level from './level/Level.jsx'
 import Timer from './timer/Timer.jsx'
-import CardsList from './board/CardsList.jsx'
 import imgSet from './imgSet.js';
 import Portal from './modal/Portal.jsx';
 
@@ -11,16 +10,24 @@ import Portal from './modal/Portal.jsx';
 const Main = () => {
 
   const [level, setLevel] = useState('super-easy');
-  const [cardImages, setCardImages] = useState(4) 
+  const [cardImages, setCardImages] = useState(imgSet(4)) 
+
+  const [moves, setMoves] = useState(0); //how many moves user did
+  const [gameOn, setGameOn] = useState(false)
+  const [gameResult, setGameResult] = useState('')
+
+  console.log('Moves', moves)
+  console.log('Game status', gameOn)
+  console.log('Game result status', gameResult)
 
   const onLevelChange =(cardsAmount)=>{
-    
-    return cardsAmount;
+    setCardImages(imgSet(cardsAmount))
+    console.log('cardImages', cardImages);
   }
-const set = imgSet(cardImages)
-  console.log('cardImages', cardImages);
-  console.log('level', level);
 
+  const handleRestart=(restart)=>{
+    restart()
+  }
 
   return (
     <div className='main'>
@@ -29,20 +36,32 @@ const set = imgSet(cardImages)
       <Level 
       level={level}
       setLevel={setLevel}
-      setCardImages={setCardImages}
       onLevelChange={onLevelChange}
       /> 
 
-      <Timer seconds={7}/>
-
+      <Timer 
+      seconds={7}
+      gameOn={gameOn}
+      setGameOn={setGameOn}
+      setGameResult={setGameResult}
+      />
       </div>
 
       <Board 
-      cardImages={set} 
+      cardImages={cardImages} 
       gridSizeClass={level}
+      moves={moves}
+      setMoves={setMoves}
+      setGameOn={setGameOn}
+      setGameResult={setGameResult}
       />
 
-      <Portal/>
+      <Portal 
+      gameOn={gameOn}
+      gameResult={gameResult}
+      level={level}
+      moves={moves}
+      onLevelChange={onLevelChange}/>
 
     </div>
   )

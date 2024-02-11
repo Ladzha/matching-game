@@ -1,27 +1,24 @@
-import imgSet from '../imgSet'
-
-const Level = ({level, setLevel, setCardImages, onLevelChange }) => {
+const Level = ({level, setLevel, onLevelChange }) => {
 
   const handleSuperEasy =()=>{
-    setLevel('super-easy'); //set level 
-    setCardImages(4)
+    setLevel('super-easy') //set level 
     onLevelChange(4)
+    console.log('super-easy');
   }
 
   const handleEasy =()=>{
-    setLevel('easy');
-    setCardImages(6)
+    setLevel('easy')
     onLevelChange(6)
   }
 
   const handleMedium =()=>{
-    setLevel('medium');
-    setCardImages(8)
+    setLevel('medium')
+    onLevelChange(8)
   }
 
   const handleHard =()=>{
-    setLevel('hard');
-    setCardImages(10)
+    setLevel('hard')
+    onLevelChange(10)
   }
 
   return (
